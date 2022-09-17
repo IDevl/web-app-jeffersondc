@@ -1,10 +1,11 @@
 import "./career.css";
 import { useState } from "react";
-import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Center } from "@mantine/core";
+import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { Plus } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
 import moment from 'moment';
+import axios from 'axios';
 
 const Career = props => {
 
@@ -18,7 +19,7 @@ const Career = props => {
 	const formAddCareer = useForm({
 		initialValues: {
 			name: '',
-			descritipion: '',
+			description: '',
 			targetDate: new Date(new Date().setHours(0, 0, 0, 0)),
 			completedDate: new Date(new Date().setHours(0, 0, 0, 0))
 		},
@@ -27,7 +28,7 @@ const Career = props => {
 	const formEditCareer = useForm({
 		initialValues: {
 			name: '',
-			descritipion: '',
+			description: '',
 			targetDate: new Date(new Date().setHours(0, 0, 0, 0)),
 			completedDate: new Date(new Date().setHours(0, 0, 0, 0))
 		},
@@ -49,14 +50,46 @@ const Career = props => {
 
 	const handleAddCareer = (e) => {
 		var formattedTargetDate = moment(e.targetDate).format("MMMM DD, YYYY");
-		var formattedCompletedDate = moment(e.completedDate).format("MMMM DD, YYYY");;
-		console.log(formattedTargetDate);
+		var formattedCompletedDate = moment(e.completedDate).format("MMMM DD, YYYY");
+
+		axios.post(`${process.env.REACT_APP_API_URL}`, {
+			request: "addcareer",
+			id: e.id,
+			name: e.name,
+			descritipion: e.description,
+			targetDate: formattedTargetDate,
+			completedDate: formattedCompletedDate
+		})
+			.then((response) => {
+				if (response.data === "Success") {
+					
+				}
+				else {
+
+				}
+			});
 	}
 
 	const handleEditCareer = (e) => {
 		var formattedTargetDate = moment(e.targetDate).format("MMMM DD, YYYY");
-		var formattedCompletedDate = moment(e.completedDate).format("MMMM DD, YYYY");;
-		console.log(formattedTargetDate);
+		var formattedCompletedDate = moment(e.completedDate).format("MMMM DD, YYYY");
+
+		axios.post(`${process.env.REACT_APP_API_URL}`, {
+			request: "editcareer",
+			id: e.id,
+			name: e.name,
+			descritipion: e.description,
+			targetDate: formattedTargetDate,
+			completedDate: formattedCompletedDate
+		})
+			.then((response) => {
+				if (response.data === "Success") {
+					
+				}
+				else {
+
+				}
+			});
 	}
 
 

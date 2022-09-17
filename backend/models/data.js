@@ -10,6 +10,10 @@ const UserCareerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String,
+        required: true,
+    },
     targetDate: {
         type: String,
         required: true,
@@ -21,11 +25,11 @@ const UserCareerSchema = new mongoose.Schema({
 });
 
 router.post('/', async (req, res) => {
-    const user = req.body;
+    const careerData = req.body;
     const UserModel = mongoose.model(user.email, UserCareerSchema);
 
     if (user.request === "addcareer") {
-       
+       console.log(careerData);
     }
 })
 

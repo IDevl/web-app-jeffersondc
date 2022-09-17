@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const cookieSession = require("cookie-session");
 const app = express();
 const addUsersRoute = require("./models/users");
+const addDataRoute = require("./models/data");
 const path = require('path');
 
 mongoose.connect("mongodb+srv://cgitech:Fb7AxGsPTrydfwou@cluster0.vi7lzcx.mongodb.net/?retryWrites=true&w=majority")
@@ -30,6 +31,7 @@ app.use(
 );
 
 app.use("/", addUsersRoute);
+app.use("/", addDataRoute);
 
 const parentPath = path.resolve(__dirname, '..');
 

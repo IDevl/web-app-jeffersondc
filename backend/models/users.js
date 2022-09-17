@@ -69,12 +69,4 @@ router.post('/', async (req, res) => {
 })
 
 
-
-
-router.get("/", async (req, res) => {
-    console.log(req.email);
-});
-
-
-
 module.exports = router;
