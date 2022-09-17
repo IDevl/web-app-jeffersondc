@@ -1,0 +1,39 @@
+.main-login {
+    max-width: none;
+    background: linear-gradient(270deg,#5236ab 0,#e41937 200%) !important;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.card {
+    min-width: 300px;
+    overflow: visible;
+}
+
+.card-section {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    margin-top: -45px;
+}
+
+.avatar .mantine-Avatar-placeholder {
+    border: 0;
+    background: linear-gradient(-270deg,#5236ab 0,#e41937 100%);
+}
+
+.button {
+    transition: 400ms;
+    border: 0;
+    background: #5236ab;
+}
+
+.button:hover {
+    background: #2f2063;
+}
+

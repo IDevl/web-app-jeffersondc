@@ -1,0 +1,139 @@
+.main-home {
+    max-width: none;
+    background: rgb(255, 255, 255) !important;
+    margin-top: 150px;
+}
+
+.heading1 {
+    font-size: 3.4rem;
+    line-height: 1.15;
+    color: rgb(0, 0, 0);
+    letter-spacing: 3px;
+}
+
+.heading2 {
+    font-size: 2.4rem;
+    letter-spacing: 3px;
+    line-height: 1.15;
+    color: rgb(50, 50, 50);
+}
+
+.heading3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    color: rgb(60, 60, 60);
+}
+
+.heading4 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgb(50, 50, 50);
+}
+
+.paragraph {
+    font-size: 1.2rem;
+    color: rgb(50, 50, 50);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    height: auto;
+}
+
+.container:nth-child(1) {
+    margin-bottom: 1em;
+}
+
+.nav-bar-desktop {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    min-height: 100px;
+}
+
+.nav-bar-desktop a {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgb(0, 0, 0) !important;
+}
+
+.nav-bar-desktop a:hover {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.nav-bar-mobile {
+    display: none;
+    width: 100%;
+    min-height: 100px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.carousel, .progress-bar, .center {
+    width: 100%;
+}
+
+.carousel .card {
+    max-width: 270px;
+    min-height: 400px;
+    max-height: 400px;
+    margin: auto;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: start;
+}
+
+.anchor-contact {
+    color: black !important;
+    font-weight: 500;
+}
+
+.anchor-contact:hover {
+    color: #3d194d !important;
+}
+
+.anchor-header {
+    color: black !important;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.button-link {
+    color: white !important;
+    background-color: rgba(0, 0, 0);
+}
+
+.button-link:hover {
+    color: white !important;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .nav-bar-desktop {
+        display: none;
+    }
+    .nav-bar-mobile {
+        display: flex;
+    }
+    .anchor-contact {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+
+

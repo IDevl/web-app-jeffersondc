@@ -1,0 +1,48 @@
+[ 
+    {
+        "image": "https://jeffersondc.netlify.app/img/certificates/SEOSEMINAR_ReSkills-1.png",
+        "title": "SEO Checklist on Fundamental",
+        "badges": [
+            "Search Engine Optimization",
+            "CPD",
+            "ReSkills"
+        ]
+    },
+    {
+        "image": "https://jeffersondc.netlify.app/img/certificates/BasicsofNetworkAddress-1.png",
+        "title": "Basics of Network Addresses",
+        "badges": [
+            "Network Addresses",
+            "IP Address",
+            "CPD",
+            "ReSkills"
+        ]
+    },
+    {
+        "image": "https://jeffersondc.netlify.app/img/certificates/JEFFERSON%20BARTOLAZO%20DELA%20CRUZ_TECH4ED_R4AQUE_DL-116-1.png",
+        "title": "Video Editing Techniques using Filmora",
+        "badges": [
+            "Video Editing",
+            "Filmora",
+            "DICT"
+        ]
+    },
+    {
+        "image": "https://jeffersondc.netlify.app/img/certificates/PPTSKILLSCPD_RESKILLS-1.png",
+        "title": "Ultimate Powerpoint Designer Masterclass",
+        "badges": [
+            "PowerPoint",
+            "CPD",
+            "ReSkills"
+        ]
+    },
+    {
+        "image": "https://jeffersondc.netlify.app/img/certificates/PowerOfSelfConfidence_ReSkills-1.png",
+        "title": "The Power of Self-Confidence",
+        "badges": [
+            "Self-Confidence",
+            "CPD",
+            "ReSkills"
+        ]
+    }
+]

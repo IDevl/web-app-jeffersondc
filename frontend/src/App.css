@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+}
+
+.main-app {
+    width: 100%;
+    max-width: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #5236ab !important;
+    text-decoration: none !important;
+    transition: 400ms;
+}
+
+a:hover {
+    color: #302064 !important;
+}
+
+.container-nav {
+    position: fixed;
+    width: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 2;
+}
+
+.nav-bar-desktop {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    min-height: 100px;
+}
+
+.nav-bar-desktop a {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgb(0, 0, 0) !important;
+}
+
+.nav-bar-desktop a:hover {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.nav-bar-mobile {
+    display: none;
+    width: 100%;
+    min-height: 100px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.anchor-contact {
+    color: black !important;
+    font-weight: 500;
+}
+
+.anchor-contact:hover {
+    color: #3d194d !important;
+}
+
+.anchor-header {
+    color: black !important;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 767px) {
+    .nav-bar-desktop {
+        display: none;
+    }
+    .nav-bar-mobile {
+        display: flex;
+    }
+    .anchor-contact {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+
+
+
