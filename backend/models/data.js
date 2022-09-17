@@ -10,11 +10,11 @@ const UserCareerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    name: {
+    targetDate: {
         type: String,
         required: true,
     },
-    name: {
+    completedDate: {
         type: String,
         required: true,
     },
@@ -22,9 +22,9 @@ const UserCareerSchema = new mongoose.Schema({
 
 router.post('/', async (req, res) => {
     const user = req.body;
-    const UserModel = mongoose.model("users", UserSchema);
+    const UserModel = mongoose.model(user.email, UserCareerSchema);
 
-    if (user.request === "register") {
+    if (user.request === "addcareer") {
        
     }
 })
