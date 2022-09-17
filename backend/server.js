@@ -30,9 +30,6 @@ app.use(
 	})
 );
 
-app.use("/", addUsersRoute);
-app.use("/", addDataRoute);
-
 const parentPath = path.resolve(__dirname, '..');
 
 if (process.env.NODE_ENV === "production") {
@@ -41,6 +38,10 @@ if (process.env.NODE_ENV === "production") {
 		res.sendFile(path.resolve(parentPath, "frontend", "build", "index.html"))
 	});
 }
+
+app.use(addUsersRoute);
+
+app.use(addDataRoute);
 
 
 const port = process.env.PORT || 8080;
