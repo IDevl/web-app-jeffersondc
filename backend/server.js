@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const cookieSession = require("cookie-session");
 const app = express();
 const addUsersRoute = require("./models/users");
+const path = require('path');
 
 mongoose.connect("mongodb+srv://cgitech:Fb7AxGsPTrydfwou@cluster0.vi7lzcx.mongodb.net/?retryWrites=true&w=majority")
 
@@ -30,6 +31,14 @@ app.use(
 
 app.use("/", addUsersRoute);
 
+const parentPath = path.resolve(__dirname, '..');
+
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(parentPath, "/client/build")));
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(parentPath, "client", "build", "index.html"))
+	});
+}
 
 
 const port = process.env.PORT || 8080;
