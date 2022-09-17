@@ -1,4 +1,5 @@
 import "./login.css";
+import axios from 'axios';
 import { useEffect, useState } from "react";
 import { Container, PasswordInput, Card, TextInput, Space, Button, Center, Anchor, Group } from '@mantine/core';
 import { Avatar } from '@mantine/core';
@@ -26,6 +27,7 @@ const Login = props => {
 		},
 		validate: {
 			email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+			password: (value) => (value.length < 6 ? 'Password must have at least 6 characters' : null),
 			confirmPassword: (value, values) => value !== values.password ? 'Passwords did not match' : null,
 		},
 	});
@@ -57,11 +59,31 @@ const Login = props => {
 	}
 
 	const handleLogin = (e) => {
-		console.log(e.email);
+		axios.post(`${process.env.REACT_APP_API_URL}`, {
+			request: "login",
+			email: e.email,
+			password: e.password
+		})
+		.then((response) => {
+			console.log(response.data);
+			if(response.data === "Success") {
+				setActiveModal("forgotpassword");
+			}
+		});
 	}
 
 	const handleRegister = (e) => {
-		console.log(e.email);
+		axios.post(`${process.env.REACT_APP_API_URL}`, {
+			request: "register",
+			email: e.email,
+			password: e.password
+		})
+		.then((response) => {
+			console.log(response.data);
+			if(response.data === "Success") {
+				setActiveModal("login");
+			}
+		});
 	}
 
 	const handleForgotPassword = (e) => {

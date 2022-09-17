@@ -13,8 +13,8 @@ function App() {
   const [opened, setOpened] = useState(false);
 
   const getUser = async () => {
-    setActivePage("career");
-    setUser("career");
+    setActivePage("login");
+    //setUser("career");
   }
 
   const goHome = () => {
