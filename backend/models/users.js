@@ -1,6 +1,8 @@
+require("dotenv").config();
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -43,13 +45,13 @@ router.post('/', async (req, res) => {
             }
             else {
                 bcrypt.compare(user.password, result.password).then(isCorrect => {
-                    if(isCorrect) {
-                        res.json("Success!");
+                    if (isCorrect) {
+                        res.json(result);
                     }
                     else {
                         res.json("Wrong password!");
                     }
-                }) 
+                })
             }
         });
     }
@@ -64,7 +66,15 @@ router.post('/', async (req, res) => {
             }
         });
     }
+
 })
+
+
+
+
+router.get("/", async (req, res) => {
+    console.log(req.email);
+});
 
 
 

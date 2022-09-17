@@ -90,11 +90,12 @@ const Login = props => {
 				if (response.data === "Email does not exists!") {
 					formLogin.setErrors({ email: response.data });
 				}
-				if (response.data === "Wrong password!") {
+				else if (response.data === "Wrong password!") {
 					formLogin.setErrors({ password: response.data });
 				}
-				if (response.data === "Success!") {
-					//Loading then DIRECT TO HOME
+				else {
+					localStorage.setItem("user", JSON.stringify(response.data));
+					window.location.reload(false);
 				}
 			});
 	}

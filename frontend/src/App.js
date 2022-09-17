@@ -2,40 +2,50 @@ import "./App.css";
 import Login from "./pages/login";
 import Home from "./pages/home";
 import Career from "./pages/career";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { Home2, Run, UserOff } from 'tabler-icons-react';
 import { Container, Stack, Anchor, Group, Drawer, Burger, Divider } from '@mantine/core';
 
+function getLocalStorageOrDefault(key, defaultValue) {
+  const stored = localStorage.getItem(key);
+  if (!stored) {
+    return defaultValue;
+  }
+  return JSON.parse(stored);
+}
+
 function App() {
 
-  const [user, setUser] = useState(null);
-  const [activePage, setActivePage ] = useState('');
+  const [user, setUser] = useState(getLocalStorageOrDefault("user", null));
+
+  const [activePage, setActivePage] = useState(getLocalStorageOrDefault("activePage", "authScreen"));
+
   const [opened, setOpened] = useState(false);
 
-  const getUser = async () => {
-    setActivePage("login");
-    //setUser("career");
-  }
-
   const goHome = () => {
-    setActivePage("home");
+    localStorage.setItem("activePage", JSON.stringify("authScreen"));
+    window.location.reload(false);
     setOpened(false);
   }
 
   const goCareer = () => {
-    setActivePage("career");
+    localStorage.setItem("activePage", JSON.stringify("career"));
+    window.location.reload(false);
     setOpened(false);
   }
 
-  useEffect(() => {
-		getUser();
-	}, []);
+  const Logout = () => {
+    localStorage.clear();
+    window.location.reload(false);
+  }
+
+
 
   return (
     <>
       <Container className="main-app">
-          {/* Header */}
-          {activePage !== "login" && user && 
+        {/* Header */}
+        {user &&
           <Container className="container-nav">
             <div class="nav-bar-desktop">
               <Group spacing="xl">
@@ -49,7 +59,7 @@ function App() {
                 </Group>
                 <Group spacing="xs">
                   <UserOff size={24} />
-                  <Anchor>Logout</Anchor>
+                  <Anchor onClick={()=>Logout()}>Logout</Anchor>
                 </Group>
               </Group>
             </div>
@@ -73,7 +83,7 @@ function App() {
                     </Group>
                     <Group spacing="xs">
                       <UserOff size={24} />
-                      <Anchor className="anchor-header">Logout</Anchor>
+                      <Anchor className="anchor-header" onClick={()=>Logout()}>Logout</Anchor>
                     </Group>
                   </Stack>
                 </>}
@@ -87,9 +97,9 @@ function App() {
             <Divider color="dark" style={{ width: "100%" }} />
           </Container>}
 
-          {activePage === "login" && !user && <Login />}
-          {activePage === "home" && user && <Home />}
-          {activePage === "career" && user && <Career />}
+        {activePage === "authScreen" && !user && <Login />}
+        {activePage === "authScreen" && user && <Home />}
+        {activePage === "career" && user && <Career />}
       </Container>
     </>
   );
