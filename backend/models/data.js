@@ -25,10 +25,10 @@ const UserCareerSchema = new mongoose.Schema({
 });
 
 router.post('/', async (req, res) => {
+    console.log(req);
     const careerData = req.body;
     const UserModel = mongoose.model(user.email, UserCareerSchema);
-
-    if (user.request === "addcareer") {
+    if (careerData.request === "addcareer") {
        console.log(careerData);
     }
 })
