@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
                 res.json("Success");
             }
             else {
-                res.json("Email Already Taken!");
+                res.json("Email already taken!");
             }
         });
     }
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
     if (user.request === "login") {
         UserModel.findOne({ email: user.email }, (err, result) => {
             if (!result) {
-                res.json("Email does not exists");
+                res.json("Email does not exists!");
             }
             else {
                 bcrypt.compare(user.password, result.password).then(isCorrect => {
@@ -47,9 +47,20 @@ router.post('/', async (req, res) => {
                         res.json("Success!");
                     }
                     else {
-                        res.json("Wrong Password!");
+                        res.json("Wrong password!");
                     }
                 }) 
+            }
+        });
+    }
+
+    if (user.request === "forgotpassword") {
+        UserModel.findOne({ email: user.email }, (err, result) => {
+            if (!result) {
+                res.json("Email does not exists!");
+            }
+            else {
+                res.json("Success!");
             }
         });
     }

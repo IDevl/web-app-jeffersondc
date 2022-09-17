@@ -1,13 +1,16 @@
 import "./login.css";
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import { Container, PasswordInput, Card, TextInput, Space, Button, Center, Anchor, Group } from '@mantine/core';
+import { Container, PasswordInput, Card, TextInput, Space, Button, Center, Anchor, Group, Modal, Title } from '@mantine/core';
 import { Avatar } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 const Login = props => {
 
 	const [activeModal, setActiveModal] = useState('');
+	const [successModal, setSuccessModal] = useState(false);
+	const [successTitleLabel, setSuccessTitleLabel] = useState('');
+	const [successButtonLabel, setSuccessButtonLabel] = useState('');
 
 	const formLogin = useForm({
 		initialValues: {
@@ -56,6 +59,25 @@ const Login = props => {
 		formRegister.reset();
 		formForgotPassword.reset();
 		setActiveModal("login");
+		setSuccessModal(false);
+	}
+	
+	const handleRegister = (e) => {
+		axios.post(`${process.env.REACT_APP_API_URL}`, {
+			request: "register",
+			email: e.email,
+			password: e.password
+		})
+			.then((response) => {
+				if (response.data === "Email already taken!") {
+					formRegister.setErrors({ email: response.data });
+				}
+				if (response.data === "Success") {
+					setSuccessTitleLabel("Successfully registered!");
+					setSuccessButtonLabel("Back to Login");
+					setSuccessModal(true);
+				}
+			});
 	}
 
 	const handleLogin = (e) => {
@@ -64,30 +86,34 @@ const Login = props => {
 			email: e.email,
 			password: e.password
 		})
-		.then((response) => {
-			console.log(response.data);
-			if(response.data === "Success") {
-				setActiveModal("forgotpassword");
-			}
-		});
-	}
-
-	const handleRegister = (e) => {
-		axios.post(`${process.env.REACT_APP_API_URL}`, {
-			request: "register",
-			email: e.email,
-			password: e.password
-		})
-		.then((response) => {
-			console.log(response.data);
-			if(response.data === "Success") {
-				setActiveModal("login");
-			}
-		});
+			.then((response) => {
+				if (response.data === "Email does not exists!") {
+					formLogin.setErrors({ email: response.data });
+				}
+				if (response.data === "Wrong password!") {
+					formLogin.setErrors({ password: response.data });
+				}
+				if (response.data === "Success!") {
+					//Loading then DIRECT TO HOME
+				}
+			});
 	}
 
 	const handleForgotPassword = (e) => {
-		console.log(e.email);
+		axios.post(`${process.env.REACT_APP_API_URL}`, {
+			request: "forgotpassword",
+			email: e.email,
+		})
+			.then((response) => {
+				if (response.data === "Email does not exists!") {
+					formForgotPassword.setErrors({ email: response.data });
+				}
+				if (response.data === "Success!") {
+					setSuccessTitleLabel("Password reset sent to your email!");
+					setSuccessButtonLabel("Back to Login");
+					setSuccessModal(true);
+				}
+			});
 	}
 
 	useEffect(() => {
@@ -97,6 +123,13 @@ const Login = props => {
 	return (
 		<>
 			<Container className="main-login">
+				<Modal centered withCloseButton size="xs" radius="xs" opened={successModal} onClose={() => setSuccessModal(false)}>
+					<Title align="center" order={4}>{successTitleLabel}</Title>
+					<Group grow mt="sm">
+						<Button radius="xs" className="button" onClick={()=>backToLogin()}>{successButtonLabel}</Button>
+					</Group>
+				</Modal>
+
 				{activeModal === "login" &&
 					<Container className="container">
 						<Card shadow="xl" p="lg" radius="xs" withBorder className="card">
@@ -137,7 +170,7 @@ const Login = props => {
 							</Center>
 						</Card>
 					</Container>
-				} 
+				}
 
 				{activeModal === "register" &&
 					<Container className="container">
