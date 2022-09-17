@@ -137,7 +137,7 @@ const Login = props => {
 							</Center>
 						</Card>
 					</Container>
-				}
+				} 
 
 				{activeModal === "register" &&
 					<Container className="container">
