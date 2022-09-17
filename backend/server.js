@@ -36,9 +36,9 @@ app.use("/", addDataRoute);
 const parentPath = path.resolve(__dirname, '..');
 
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(parentPath, "/client/build")));
+	app.use(express.static(path.join(parentPath, "/frontend/build")));
 	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(parentPath, "client", "build", "index.html"))
+		res.sendFile(path.resolve(parentPath, "frontend", "build", "index.html"))
 	});
 }
 
