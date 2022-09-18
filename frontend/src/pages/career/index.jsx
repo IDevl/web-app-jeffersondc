@@ -220,8 +220,8 @@ const Career = props => {
 											<Text weight={400}>{careers.career_completedDate}</Text>
 										</Group>
 										<Group grow mt="xs">
-											<Button mt="xs" radius="xs" color="red" onClick={(e) => SelectCareerDelete(careers.career_id)}>Delete</Button>
-											<Button mt="xs" radius="xs" className="button" onClick={(e) => SelectCareerEdit(careers.career_id)}>Edit</Button>
+											<Button mt="xs" radius="xs" color="dark" variant="outline" onClick={(e) => SelectCareerDelete(careers.career_id)}>Delete</Button>
+											<Button mt="xs" radius="xs" color="dark" onClick={(e) => SelectCareerEdit(careers.career_id)}>Edit</Button>
 										</Group>
 									</Card>
 								</Grid.Col>
