@@ -5,8 +5,7 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const cookieSession = require("cookie-session");
 const app = express();
-const addUsersRoute = require("./models/users");
-const addDataRoute = require("./models/data");
+const UserRoute = require("./models/user");
 const path = require('path');
 
 mongoose.connect("mongodb+srv://cgitech:Fb7AxGsPTrydfwou@cluster0.vi7lzcx.mongodb.net/?retryWrites=true&w=majority")
@@ -39,9 +38,8 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
-app.use(addUsersRoute);
+app.use("/", UserRoute);
 
-app.use(addDataRoute);
 
 
 const port = process.env.PORT || 8080;

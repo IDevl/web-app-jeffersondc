@@ -15,6 +15,30 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
+const UserCareerSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    targetDate: {
+        type: String,
+        required: true,
+    },
+    completedDate: {
+        type: String,
+        required: true,
+    },
+});
+
+
 router.post('/', async (req, res) => {
     const user = req.body;
     const UserModel = mongoose.model("users", UserSchema);
@@ -64,6 +88,10 @@ router.post('/', async (req, res) => {
                 res.json("Success!");
             }
         });
+    }
+
+    if (user.request === "addcareer") {
+       console.log(user);
     }
 
 })
