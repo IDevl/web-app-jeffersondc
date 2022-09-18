@@ -337,7 +337,7 @@ const Career = props => {
 
 				<Modal centered withCloseButton size="sm" radius="xs" opened={deleteModalOpen} onClose={() => reloadPage()}>
 					<Container grow>
-						<Text size={14} weight={400}>Are you sure you want to delete <strong>{selectedCareerName}({selectedCareerId})</strong>?</Text>
+						<Text size={16} weight={400}>Are you sure you want to delete <strong>{selectedCareerName}({selectedCareerId})</strong>?</Text>
 
 					</Container>
 					<Group grow mt="lg">
