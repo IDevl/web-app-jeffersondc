@@ -2,7 +2,7 @@ import "./App.css";
 import Login from "./pages/login";
 import Home from "./pages/home";
 import Career from "./pages/career";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Home2, Run, UserOff } from 'tabler-icons-react';
 import { Container, Stack, Anchor, Group, Drawer, Burger, Divider } from '@mantine/core';
 
@@ -98,8 +98,8 @@ function App() {
           </Container>}
 
         {activePage === "authScreen" && !user && <Login />}
-        {activePage === "authScreen" && user && <Home />}
-        {activePage === "career" && user && <Career />}
+        {activePage === "authScreen" && user && <Home user={user} />}
+        {activePage === "career" && user && <Career user={user} />}
       </Container>
     </>
   );

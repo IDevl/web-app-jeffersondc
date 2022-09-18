@@ -2,6 +2,7 @@ require("dotenv").config();
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const shortid = require('shortid');
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -16,23 +17,23 @@ const UserSchema = new mongoose.Schema({
 
 
 const UserCareerSchema = new mongoose.Schema({
-    id: {
+    career_id: {
         type: String,
         required: true,
     },
-    name: {
+    career_name: {
         type: String,
         required: true,
     },
-    description: {
+    career_description: {
         type: String,
         required: true,
     },
-    targetDate: {
+    career_targetDate: {
         type: String,
         required: true,
     },
-    completedDate: {
+    career_completedDate: {
         type: String,
         required: true,
     },
@@ -90,8 +91,82 @@ router.post('/', async (req, res) => {
         });
     }
 
-    if (user.request === "addcareer") {
-       console.log(user);
+    if (user.email) {
+        if (user.request === "showcareers") {
+            const UserCareerModel = mongoose.model(user.email, UserCareerSchema);
+            UserCareerModel.find({}, (err, result) => {
+                if (result) {
+                    res.json(result);
+                }
+                else {
+                    res.json("No items found!");
+                }
+            });
+        }
+
+        if (user.request === "getcareerdata") {
+            const UserCareerModel = mongoose.model(user.email, UserCareerSchema);
+            UserCareerModel.findOne({ career_id: user.career_id }, (err, result) => {
+                if (result) {
+                    res.json(result);
+                }
+                else {
+                    res.json("No career found!");
+                }
+            });
+        }
+
+        if (user.request === "deletecareer") {
+            const UserCareerModel = mongoose.model(user.email, UserCareerSchema);
+            UserCareerModel.deleteOne({ career_id: user.career_id }, (err, result) => {
+                if (result) {
+                    res.json("Career Deleted.");
+                }
+                else {
+                    res.json("No items found!");
+                }
+            });
+        }
+
+        if (user.request === "addcareer") {
+            const UserCareerModel = mongoose.model(user.email, UserCareerSchema);
+            UserCareerModel.findOne({ career_name: user.career_name }, (err, result) => {
+                if (!result) {
+                    const newUserCareer = new UserCareerModel({
+                        career_id: "C" + shortid.generate(),
+                        career_name: user.career_name,
+                        career_description: user.career_description,
+                        career_targetDate: user.career_targetDate,
+                        career_completedDate: user.career_completedDate
+                    })
+                    newUserCareer.save();
+                    res.json("Career added successfully!");
+                }
+                else {
+                    res.json("Career already exists!");
+                }
+            });
+        }
+
+        if (user.request === "editcareer") {
+            const UserCareerModel = mongoose.model(user.email, UserCareerSchema);
+            UserCareerModel.updateOne({ career_id: user.career_id }, {
+                career_name: user.career_name,
+                career_description: user.career_description,
+                career_targetDate: user.career_targetDate,
+                career_completedDate: user.career_completedDate
+            }, (err, result) => {
+                if (result) {
+                    res.json("Career edited successfully!");
+                }
+                else {
+                    res.json("No career found!");
+                }
+            });
+        }
+    }
+    else {
+        res.json("Session Timeout! Please relogin!");
     }
 
 })

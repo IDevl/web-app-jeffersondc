@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.1",
     "nodemon": "^2.0.20",
+    "shortid": "^2.2.16",
     "verify-jwt": "^1.0.9"
   }
 }
