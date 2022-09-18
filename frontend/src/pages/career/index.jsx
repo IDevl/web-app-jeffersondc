@@ -1,6 +1,6 @@
 import "./career.css";
 import { useState, useEffect } from "react";
-import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea } from "@mantine/core";
+import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Loader } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { Plus } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
@@ -183,7 +183,7 @@ const Career = props => {
 	}
 
 	useEffect(() => {
-		showAllCareers();
+		reloadPage();
 	}, []);
 
 
@@ -196,7 +196,9 @@ const Career = props => {
 				</Container>
 
 				<Container className="container" my="xl">
-					<Grid mt="sm" columns={3} justify="start">
+					{!careers && <Loader color="dark" variant="dots" />}
+
+					{careers && <Grid mt="sm" columns={3} justify="start">
 						{careers.map(careers => {
 							return (
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
@@ -230,11 +232,10 @@ const Career = props => {
 							)
 						})
 						}
-
 						<Grid.Col>
 							<Button variant="outline" radius="xs" color="dark" onClick={() => setAddModalOpen(true)}><Plus size={24} /></Button>
 						</Grid.Col>
-					</Grid>
+					</Grid>}
 				</Container>
 
 				<Modal centered withCloseButton size="md" radius="xs" opened={addModalOpen} onClose={() => reloadPage()}>
