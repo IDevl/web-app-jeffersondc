@@ -274,7 +274,7 @@ const Career = props => {
 						/>
 						<Group grow mt="lg">
 							<Button variant="outline" radius="xs" color="dark" onClick={() => reloadPage()}>Cancel</Button>
-							<Button radius="xs" className="button" type="submit">Add</Button>
+							<Button radius="xs" color="dark" type="submit">Add</Button>
 						</Group>
 					</form>
 				</Modal>
@@ -326,7 +326,7 @@ const Career = props => {
 						/>
 						<Group grow mt="lg">
 							<Button variant="outline" radius="xs" color="dark" onClick={() => reloadPage()}>Cancel</Button>
-							<Button radius="xs" className="button" type="submit">Edit</Button>
+							<Button radius="xs" color="dark" type="submit">Edit</Button>
 						</Group>
 					</form>
 				</Modal>
@@ -345,7 +345,7 @@ const Career = props => {
 				<Modal centered withCloseButton size="xs" radius="xs" opened={errorModal} onClose={() => reloadPage()}>
 					<Title align="center" order={4}>{error}</Title>
 					<Group grow mt="sm">
-						<Button radius="xs" className="button" onClick={() => reloadPage()}>OK</Button>
+						<Button radius="xs" color="dark" onClick={() => reloadPage()}>OK</Button>
 					</Group>
 				</Modal>
 
