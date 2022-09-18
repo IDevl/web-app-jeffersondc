@@ -21,7 +21,7 @@ a:hover {
 }
 
 .container-nav {
-    position: fixed;
+    position: sticky;
     width: auto;
     top: 0;
     left: 0;
