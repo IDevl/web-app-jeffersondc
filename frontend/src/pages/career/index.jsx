@@ -1,6 +1,6 @@
 import "./career.css";
 import { useState, useEffect } from "react";
-import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Loader } from "@mantine/core";
+import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Loader, Image } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { Plus } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
@@ -203,19 +203,15 @@ const Career = props => {
 							return (
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
 									<Card withBorder shadow="sm" p="lg" radius="md">
-										<Group spacing="xs">
-											<Title order={5}>ID:</Title>
-											<Text weight={400}>{careers.career_id}</Text>
-										</Group>
-										<Group spacing="xs">
-											<Title order={5}>Name:</Title>
-											<Text weight={400}>{careers.career_name}</Text>
-										</Group>
-										<Group spacing="xs">
-											<Title order={5}>Description:</Title>
-											<Text weight={400}>{careers.career_description}</Text>
-										</Group>
-										<Group spacing="xs">
+										<Card.Section spacing="xs">
+											<Image src="https://picsum.photos/300/120?grayscale"/>
+										</Card.Section>
+									
+										<Title order={4} mt="sm" align="center">{careers.career_name}</Title>
+								
+										<Text weight={400} align="center">{careers.career_description}</Text>
+										
+										<Group spacing="xs" mt="sm">
 											<Title order={5}>Target:</Title>
 											<Text weight={400}>{careers.career_targetDate}</Text>
 										</Group>
@@ -223,9 +219,9 @@ const Career = props => {
 											<Title order={5}>Completion:</Title>
 											<Text weight={400}>{careers.career_completedDate}</Text>
 										</Group>
-										<Group grow>
+										<Group grow mt="xs">
 											<Button mt="xs" radius="xs" color="red" onClick={(e) => SelectCareerDelete(careers.career_id)}>Delete</Button>
-											<Button mt="xs" radius="xs" color="dark" onClick={(e) => SelectCareerEdit(careers.career_id)}>Edit</Button>
+											<Button mt="xs" radius="xs" className="button" onClick={(e) => SelectCareerEdit(careers.career_id)}>Edit</Button>
 										</Group>
 									</Card>
 								</Grid.Col>
@@ -332,14 +328,14 @@ const Career = props => {
 						/>
 						<Group grow mt="lg">
 							<Button variant="outline" radius="xs" color="dark" onClick={() => reloadPage()}>Cancel</Button>
-							<Button radius="xs" color="dark" type="submit">Edit</Button>
+							<Button radius="xs" className="button" type="submit">Edit</Button>
 						</Group>
 					</form>
 				</Modal>
 
-				<Modal centered withCloseButton size="md" radius="xs" opened={deleteModalOpen} onClose={() => reloadPage()}>
+				<Modal centered withCloseButton size="sm" radius="xs" opened={deleteModalOpen} onClose={() => reloadPage()}>
 					<Container grow>
-						<Text size={18} weight={400}>Are you sure you want to delete <strong>{selectedCareerName}</strong> with <br></br><strong>ID: {selectedCareerId}</strong>?</Text>
+						<Text size={18} weight={400}>Are you sure you want to delete <strong>{selectedCareerName}({selectedCareerId})</strong>?</Text>
 
 					</Container>
 					<Group grow mt="lg">
