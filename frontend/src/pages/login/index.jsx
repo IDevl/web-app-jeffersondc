@@ -40,7 +40,7 @@ const Login = props => {
 			email: '',
 		},
 		validate: {
-			email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+			email: (value) => (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) ? null : 'Invalid email'),
 		},
 	});
 
