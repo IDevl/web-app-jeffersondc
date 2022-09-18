@@ -196,8 +196,6 @@ const Career = props => {
 				</Container>
 
 				<Container className="container" my="xl">
-					{!careers && <Loader color="dark" variant="dots" size="xl"/>}
-
 					{careers && <Grid mt="sm" columns={3} justify="start">
 						{careers.map(careers => {
 							return (
