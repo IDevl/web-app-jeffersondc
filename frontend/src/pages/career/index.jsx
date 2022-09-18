@@ -203,15 +203,15 @@ const Career = props => {
 							return (
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
 									<Card withBorder shadow="sm" p="lg" radius="md">
-										<Card.Section spacing="xs">
-											<Image src="https://picsum.photos/300/120?grayscale"/>
+										<Card.Section spacing="xs" className="card-section">
+											<Image src="https://picsum.photos/200/100?grayscale" radius="xs"/>
 										</Card.Section>
 									
 										<Title order={4} mt="sm" align="center">{careers.career_name}</Title>
 								
 										<Text weight={400} align="center">{careers.career_description}</Text>
 										
-										<Group spacing="xs" mt="sm">
+										<Group spacing="xs" mt="xs">
 											<Title order={5}>Target:</Title>
 											<Text weight={400}>{careers.career_targetDate}</Text>
 										</Group>
@@ -276,7 +276,7 @@ const Career = props => {
 						/>
 						<Group grow mt="lg">
 							<Button variant="outline" radius="xs" color="dark" onClick={() => reloadPage()}>Cancel</Button>
-							<Button radius="xs" color="dark" type="submit">Add</Button>
+							<Button radius="xs" className="button" type="submit">Add</Button>
 						</Group>
 					</form>
 				</Modal>
