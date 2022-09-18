@@ -196,7 +196,7 @@ const Career = props => {
 				</Container>
 
 				<Container className="container" my="xl">
-					{careers && <Grid mt="sm" columns={3} justify="stretch" align="stretch">
+					{careers && <Grid mt="sm" columns={3} justify="center" align="start">
 						{careers.map(careers => {
 							return (
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
