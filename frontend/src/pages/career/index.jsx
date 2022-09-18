@@ -1,8 +1,8 @@
 import "./career.css";
 import { useState, useEffect } from "react";
-import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Spoiler, Dialog, Avatar } from "@mantine/core";
+import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Spoiler, Dialog, Avatar, List, ThemeIcon } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
-import { Plus } from 'tabler-icons-react';
+import { Plus, CircleCheck, Target } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
 import moment from 'moment';
 import axios from 'axios';
@@ -187,7 +187,6 @@ const Career = props => {
 	}, []);
 
 
-
 	return (
 		<>
 			<Container className="main-career">
@@ -201,7 +200,7 @@ const Career = props => {
 							return (
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
 									<Card withBorder shadow="sm" p="lg" radius="md">
-										<Card.Section spacing="xs" className="card-section" style={{background:"linear-gradient(-270deg,#5236ab 0,#e41937 100%)"}}>
+										<Card.Section spacing="xs" className="card-section" style={{ background: "linear-gradient(-270deg,#5236ab 0,#e41937 100%)" }}>
 											<Avatar src={null} m="xl" size="md" radius="xl">DC</Avatar>
 										</Card.Section>
 
@@ -211,14 +210,15 @@ const Career = props => {
 											<Text weight={400}>{careers.career_description}</Text>
 										</Spoiler>
 
-										<Group spacing="xs" mt="xs">
-											<Title order={5}>Target:</Title>
-											<Text weight={400}>{careers.career_targetDate}</Text>
-										</Group>
-										<Group spacing="xs">
-											<Title order={5}>Completion:</Title>
-											<Text weight={400}>{careers.career_completedDate}</Text>
-										</Group>
+										<List mt="sm" spacing={6} center>
+											<List.Item icon={<ThemeIcon color="blue" size={24} radius="xl"><Target size={16} /></ThemeIcon>}>
+												{careers.career_targetDate}
+											</List.Item>
+											<List.Item icon={<ThemeIcon color="green" size={24} radius="xl"><CircleCheck size={16} /></ThemeIcon>}>
+												{careers.career_completedDate}
+											</List.Item>
+										</List>
+
 										<Group grow mt="xs">
 											<Button mt="xs" radius="xs" color="dark" variant="outline" onClick={(e) => SelectCareerDelete(careers.career_id)}>Delete</Button>
 											<Button mt="xs" radius="xs" color="dark" onClick={(e) => SelectCareerEdit(careers.career_id)}>Edit</Button>
@@ -229,8 +229,8 @@ const Career = props => {
 						})
 						}
 					</Grid>}
-					<Dialog opened={true} size="lg" radius="xs" style={{width:"auto", minHeight:"0", padding:"0", border:"none", background:"none", boxShadow:"none"}}>
-						<Button size="lg" radius="xl" onClick={() => setAddModalOpen(true)} style={{border:"none", background:"linear-gradient(270deg,#5236ab 0,#e41937 100%)", boxShadow:"0 4px 12px grey"}}><Plus size={35} /></Button>
+					<Dialog opened={true} size="lg" radius="xs" style={{ width: "auto", minHeight: "0", padding: "0", border: "none", background: "none", boxShadow: "none" }}>
+						<Button size="lg" radius="xl" onClick={() => setAddModalOpen(true)} style={{ border: "none", background: "linear-gradient(270deg,#5236ab 0,#e41937 100%)", boxShadow: "0 4px 12px grey" }}><Plus size={35} /></Button>
 					</Dialog>
 				</Container>
 
