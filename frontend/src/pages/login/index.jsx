@@ -29,7 +29,7 @@ const Login = props => {
 			confirmPassword: '',
 		},
 		validate: {
-			email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+			email: (value) => (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) ? null : 'Invalid email'),
 			password: (value) => (value.length < 6 ? 'Password must have at least 6 characters' : null),
 			confirmPassword: (value, values) => value !== values.password ? 'Passwords did not match' : null,
 		},
