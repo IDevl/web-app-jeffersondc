@@ -49,17 +49,17 @@ function App() {
           <Container className="container-nav">
             <div class="nav-bar-desktop">
               <Group spacing="xl">
-                <Group spacing="xs">
-                  <Home2 size={24} />
-                  <Anchor onClick={()=>goHome()}>Home</Anchor>
+                <Group spacing="xs" style={{cursor:"pointer"}} onClick={()=>goHome()}>
+                  <Home2 size={24}/>
+                  <Anchor>Home</Anchor>
                 </Group>
-                <Group spacing="xs">
-                  <Run size={24} />
-                  <Anchor onClick={()=>goCareer()}>Career</Anchor>
+                <Group spacing="xs" style={{cursor:"pointer"}} onClick={()=>goCareer()}>
+                  <Run size={24}/>
+                  <Anchor>Career</Anchor>
                 </Group>
-                <Group spacing="xs">
-                  <UserOff size={24} />
-                  <Anchor onClick={()=>Logout()}>Logout</Anchor>
+                <Group spacing="xs" style={{cursor:"pointer"}} onClick={()=>Logout()}>
+                  <UserOff size={24}/>
+                  <Anchor>Logout</Anchor>
                 </Group>
               </Group>
             </div>
