@@ -1,6 +1,6 @@
 import "./career.css";
 import { useState, useEffect } from "react";
-import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Image } from "@mantine/core";
+import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Image, Spoiler } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { Plus } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
@@ -206,8 +206,10 @@ const Career = props => {
 										</Card.Section>
 									
 										<Title order={4} mt="sm" align="center">{careers.career_name}</Title>
-								
-										<Text weight={400} align="center" mt="xs">{careers.career_description}</Text>
+
+										<Spoiler color="dark" maxHeight={50} showLabel="Show more" hideLabel="Hide" mt="xs">
+											<Text weight={400}>{careers.career_description}</Text>
+										</Spoiler>
 										
 										<Group spacing="xs" mt="xs">
 											<Title order={5}>Target:</Title>
@@ -238,6 +240,7 @@ const Career = props => {
 							mt="xs"
 							radius="xs"
 							label="Name"
+							maxLength={55}
 							required
 							{...formAddCareer.getInputProps('career_name')}
 						/>
@@ -288,6 +291,7 @@ const Career = props => {
 							mt="xs"
 							radius="xs"
 							label="Name"
+							maxLength={55}
 							required
 							placeholder={selectedCareerName}
 							{...formEditCareer.getInputProps('career_name')}
@@ -333,7 +337,7 @@ const Career = props => {
 
 				<Modal centered withCloseButton size="sm" radius="xs" opened={deleteModalOpen} onClose={() => reloadPage()}>
 					<Container grow>
-						<Text size={18} weight={400}>Are you sure you want to delete <strong>{selectedCareerName}({selectedCareerId})</strong>?</Text>
+						<Text size={14} weight={400}>Are you sure you want to delete <strong>{selectedCareerName}({selectedCareerId})</strong>?</Text>
 
 					</Container>
 					<Group grow mt="lg">
