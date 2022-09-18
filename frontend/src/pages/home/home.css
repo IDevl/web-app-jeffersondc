@@ -118,6 +118,11 @@
 }
 
 
+.progress-bar > div {
+    background: linear-gradient(35deg, rgb(82, 54, 171) 0%, rgb(228, 25, 55) 100%);
+
+}
+
 
 @media screen and (max-width: 767px) {
     .nav-bar-desktop {
