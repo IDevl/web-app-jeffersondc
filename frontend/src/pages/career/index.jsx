@@ -335,14 +335,14 @@ const Career = props => {
 					</form>
 				</Modal>
 
-				<Modal centered withCloseButton size="sm" radius="xs" opened={deleteModalOpen} onClose={() => reloadPage()}>
+				<Modal centered withCloseButton size="md" radius="xs" opened={deleteModalOpen} onClose={() => reloadPage()}>
 					<Container grow>
-						<Text size={20} weight={400}>Are you sure you want to delete <strong>{selectedCareerName}({selectedCareerId})</strong>?</Text>
+						<Text size={18} weight={400} align="center">Are you sure you want to delete <strong>{selectedCareerName}({selectedCareerId})</strong>?</Text>
 
 					</Container>
 					<Group grow mt="lg">
 						<Button variant="outline" radius="xs" color="dark" onClick={() => reloadPage()}>Cancel</Button>
-						<Button radius="xs" color="red" onClick={(e) => DeleteCareer(selectedCareerId)}>Delete</Button>
+						<Button radius="xs" color="dark" onClick={(e) => DeleteCareer(selectedCareerId)}>Delete</Button>
 					</Group>
 				</Modal>
 
