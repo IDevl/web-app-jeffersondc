@@ -1,6 +1,6 @@
 import "./career.css";
 import { useState, useEffect } from "react";
-import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Image, Spoiler } from "@mantine/core";
+import { Container, Grid, Title, Card, Group, Text, TextInput, Modal, Button, Textarea, Spoiler, Dialog, Avatar } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { Plus } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
@@ -201,16 +201,16 @@ const Career = props => {
 							return (
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
 									<Card withBorder shadow="sm" p="lg" radius="md">
-										<Card.Section spacing="xs" className="card-section">
-											<Image src="https://picsum.photos/200/100?grayscale" radius="xs"/>
+										<Card.Section spacing="xs" className="card-section" style={{background:"linear-gradient(-270deg,#5236ab 0,#e41937 100%)"}}>
+											<Avatar src={null} m="xl" size="md" radius="xl">DC</Avatar>
 										</Card.Section>
-									
+
 										<Title order={4} mt="sm" align="center">{careers.career_name}</Title>
 
 										<Spoiler color="dark" maxHeight={50} showLabel="Show more" hideLabel="Hide" mt="xs">
 											<Text weight={400}>{careers.career_description}</Text>
 										</Spoiler>
-										
+
 										<Group spacing="xs" mt="xs">
 											<Title order={5}>Target:</Title>
 											<Text weight={400}>{careers.career_targetDate}</Text>
@@ -228,10 +228,10 @@ const Career = props => {
 							)
 						})
 						}
-						<Grid.Col>
-							<Button variant="outline" radius="xs" color="dark" onClick={() => setAddModalOpen(true)}><Plus size={24} /></Button>
-						</Grid.Col>
 					</Grid>}
+					<Dialog opened={true} size="lg" radius="xs" style={{width:"auto", minHeight:"0", padding:"0", border:"none", background:"none", boxShadow:"none"}}>
+						<Button size="lg" radius="xl" onClick={() => setAddModalOpen(true)} style={{border:"none", background:"linear-gradient(270deg,#5236ab 0,#e41937 100%)", boxShadow:"0 4px 12px grey"}}><Plus size={35} /></Button>
+					</Dialog>
 				</Container>
 
 				<Modal centered withCloseButton size="md" radius="xs" opened={addModalOpen} onClose={() => reloadPage()}>
@@ -352,8 +352,8 @@ const Career = props => {
 						<Button radius="xs" color="dark" onClick={() => reloadPage()}>OK</Button>
 					</Group>
 				</Modal>
-
 			</Container>
+
 		</>
 	);
 }
