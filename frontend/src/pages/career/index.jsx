@@ -68,10 +68,10 @@ const Career = props => {
 				setSelectedCareerTargetDate(response.data.career_targetDate);
 				setSelectedCareerCompletedDate(response.data.career_completedDate);
 				formEditCareer.setValues({
-					career_name: selectedCareerName,
-					career_description: selectedCareerDescription,
+					career_name: response.data.career_name,
+					career_description: response.data.career_description,
 					career_targetDate: new Date(response.data.career_targetDate),
-					career_completedDate: new Date(response.data.career_targetDate)
+					career_completedDate: new Date(response.data.career_completedDate)
 				})
 				setEditModalOpen(true);
 			});
@@ -196,7 +196,7 @@ const Career = props => {
 				</Container>
 
 				<Container className="container" my="xl">
-					{careers && <Grid mt="sm" columns={3} justify="start">
+					{careers && <Grid mt="sm" columns={3} justify="stretch" align="stretch">
 						{careers.map(careers => {
 							return (
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
@@ -207,7 +207,7 @@ const Career = props => {
 									
 										<Title order={4} mt="sm" align="center">{careers.career_name}</Title>
 								
-										<Text weight={400} align="center">{careers.career_description}</Text>
+										<Text weight={400} align="center" mt="xs">{careers.career_description}</Text>
 										
 										<Group spacing="xs" mt="xs">
 											<Title order={5}>Target:</Title>
