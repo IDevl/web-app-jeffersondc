@@ -201,7 +201,7 @@ const Career = props => {
 								<Grid.Col span={1} style={{ minWidth: "320px" }}>
 									<Card withBorder shadow="sm" p="lg" radius="md">
 										<Card.Section spacing="xs" className="card-section" style={{ background: "linear-gradient(-270deg,#5236ab 0,#e41937 100%)" }}>
-											<Avatar src={null} m="xl" size="md" radius="xl">Career</Avatar>
+											<Avatar src={null} m="xl" size="md" radius="xl">C</Avatar>
 										</Card.Section>
 
 										<Title order={4} mt="sm" align="center">{careers.career_name}</Title>
