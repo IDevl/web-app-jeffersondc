@@ -109,8 +109,8 @@ const Login = props => {
 				if (response.data === "Email does not exists!") {
 					formForgotPassword.setErrors({ email: response.data });
 				}
-				if (response.data === "Success!") {
-					setSuccessTitleLabel("Password reset sent to your email!");
+				else {
+					setSuccessTitleLabel(response.data);
 					setSuccessButtonLabel("Back to Login");
 					setSuccessModal(true);
 				}

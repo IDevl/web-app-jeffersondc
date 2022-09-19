@@ -3,6 +3,16 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const shortid = require('shortid');
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    host: "smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+        user: "46c69d340f0e8a",
+        pass: "4c8f8c31b9526b"
+    }
+});
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -86,7 +96,19 @@ router.post('/', async (req, res) => {
                 res.json("Email does not exists!");
             }
             else {
-                res.json("Success!");
+                var mailOptions = {
+                    from: 'jbdelacruz411@gmail.com',
+                    to: result.email,
+                    subject: 'JBDC Web App - Forgot Password',
+                    text: 'Your password is ' + result.password
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        res.json("Error!");
+                    } else {
+                        res.json("Password sent to your email! Please Check.");
+                    }
+                });
             }
         });
     }
@@ -170,6 +192,8 @@ router.post('/', async (req, res) => {
     }
 
 })
+
+
 
 
 module.exports = router;
