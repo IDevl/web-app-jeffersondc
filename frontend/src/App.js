@@ -70,6 +70,7 @@ function App() {
                 padding="xl"
                 size="sm"
                 position="right"
+                style={{zIndex: "201"}}
               >
                 {<>
                   <Stack spacing="md">
