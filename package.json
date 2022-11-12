@@ -38,6 +38,7 @@
     "react-scripts": "5.0.1",
     "server": "^1.0.37",
     "shortid": "^2.2.16",
+    "source-map-explorer": "^2.5.3",
     "tabler-icons-react": "^1.55.0",
     "verify-jwt": "^1.0.9",
     "web-vitals": "^2.1.4"
@@ -49,7 +50,8 @@
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend",
     "predeploy": "npm install --prefix frontend && npm run build --prefix frontend",
-    "deploy": "gh-pages -d frontend/build"
+    "deploy": "gh-pages -d frontend/build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": [
