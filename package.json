@@ -49,8 +49,7 @@
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend",
     "predeploy": "npm install --prefix frontend && npm run build --prefix frontend",
-    "deploy": "gh-pages -d frontend/build",
-    "install": "npm install --production"
+    "deploy": "gh-pages -d frontend/build"
   },
   "eslintConfig": {
     "extends": [

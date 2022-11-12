@@ -4,6 +4,9 @@
     {
       "src": "package.json",
       "use": "vercel-sapper"
+    },
+    {
+      "installCommand": "pnpm install"
     }
   ]
 }
