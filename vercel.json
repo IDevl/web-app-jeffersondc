@@ -6,7 +6,7 @@
       "use": "vercel-sapper"
     },
     {
-      "installCommand": "pnpm install"
+      "installCommand": "npm install --production"
     }
   ]
 }
