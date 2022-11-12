@@ -4,7 +4,11 @@
   "private": true,
   "homepage": "https://idevl.github.io/web-app-jeffersondc",
   "dependencies": {
+    "@mantine/carousel": "^5.7.2",
     "@mantine/core": "^5.7.2",
+    "@mantine/form": "^5.7.2",
+    "@mantine/hooks": "^5.7.2",
+    "@tabler/icons": "^1.111.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -34,6 +38,7 @@
     "server": "^1.0.37",
     "shortid": "^2.2.16",
     "tabler-icons-react": "^1.55.0",
+    "verify-jwt": "^1.0.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
