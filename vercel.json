@@ -4,9 +4,6 @@
     {
       "src": "package.json",
       "use": "vercel-sapper"
-    },
-    {
-      "installCommand": "npm install --production"
     }
   ]
 }
