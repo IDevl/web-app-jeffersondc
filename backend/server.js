@@ -8,7 +8,7 @@ const app = express();
 const UserRoute = require("./models/user");
 const path = require('path');
 
-mongoose.connect("mongodb+srv://cgitech:Fb7AxGsPTrydfwou@cluster0.vi7lzcx.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.DB)
 
 app.use(express.json());
 app.use(cors());
