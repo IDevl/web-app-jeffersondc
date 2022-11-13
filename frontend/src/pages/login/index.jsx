@@ -63,7 +63,7 @@ const Login = props => {
 	}
 	
 	const handleRegister = (e) => {
-		axios.post(`${process.env.REACT_APP_API_URL}`, {
+		axios.post("https://web-app-jeffersondc.vercel.app/", {
 			request: "register",
 			email: e.email,
 			password: e.password
