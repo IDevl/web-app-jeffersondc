@@ -72,11 +72,14 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App] (https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "backend/index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@vercel/node": "^2.6.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
