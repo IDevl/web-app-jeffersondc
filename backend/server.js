@@ -13,6 +13,11 @@ mongoose.connect(process.env.DB)
 app.use(express.json());
 app.use(cors());
 
+app.use(cors({
+	origin: '*',
+	methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
+
 app.use(
 	cookieSession({
 		name: "session",
