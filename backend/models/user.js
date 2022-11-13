@@ -1,7 +1,7 @@
 require("dotenv").config();
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const shortid = require('shortid');
 var nodemailer = require('nodemailer');
 
