@@ -2,7 +2,7 @@
   "name": "web-app-jeffersondc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://idevl.github.io/web-app-jeffersondc",
+  "homepage": "https://web-app-jeffersondc.vercel.app",
   "dependencies": {
     "@mantine/carousel": "^5.7.2",
     "@mantine/core": "^5.7.2",
