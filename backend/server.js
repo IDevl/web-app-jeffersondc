@@ -21,14 +21,6 @@ app.use(
 	})
 );
 
-app.use(
-	cors({
-		origin: "http://localhost:3000",
-		methods: "GET,POST,PUT,DELETE",
-		credentials: true,
-	})
-);
-
 const parentPath = path.resolve(__dirname, '..');
 
 if (process.env.NODE_ENV === "production") {
